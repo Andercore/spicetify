@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
-  <title id="title">Spicetify logo</title>
-  <desc id="desc">A crisp green audio icon for the Spicetify Menu.</desc>
-  <rect width="512" height="512" rx="112" fill="#121212"/>
-  <circle cx="256" cy="256" r="176" fill="#1ed760"/>
-  <path d="M150 211c67-20 142-14 211 17" fill="none" stroke="#121212" stroke-linecap="round" stroke-width="25"/>
-  <path d="M168 265c53-14 111-9 164 14" fill="none" stroke="#121212" stroke-linecap="round" stroke-width="23"/>
-  <path d="M186 316c38-9 78-6 115 9" fill="none" stroke="#121212" stroke-linecap="round" stroke-width="21"/>
-</svg>
