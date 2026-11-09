@@ -17,12 +17,9 @@ jobs:
 
       - name: Read latest official Spicetify release
         id: release
-        env:
-          GH_TOKEN: ${{ github.token }}
         run: |
           version="$(curl --fail --silent --show-error \
             -H "Accept: application/vnd.github+json" \
-            -H "Authorization: Bearer ${GH_TOKEN}" \
             https://api.github.com/repos/spicetify/spicetify-cli/releases/latest \
             | jq -r '.tag_name')"
           test -n "$version"
