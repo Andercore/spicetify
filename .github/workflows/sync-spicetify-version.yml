@@ -1,0 +1,64 @@
+name: Sync Spicetify version
+
+on:
+  schedule:
+    - cron: "17 6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  sync-version:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Read latest official Spicetify release
+        id: release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          version="$(curl --fail --silent --show-error \
+            -H "Accept: application/vnd.github+json" \
+            -H "Authorization: Bearer ${GH_TOKEN}" \
+            https://api.github.com/repos/spicetify/spicetify-cli/releases/latest \
+            | jq -r '.tag_name')"
+          test -n "$version"
+          test "$version" != "null"
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+
+      - name: Update README
+        env:
+          VERSION: ${{ steps.release.outputs.version }}
+        run: |
+          python3 - <<'PY'
+          import os
+          from pathlib import Path
+
+          path = Path("README.md")
+          text = path.read_text(encoding="utf-8")
+          start = "<!-- SPICETIFY_VERSION:START -->"
+          end = "<!-- SPICETIFY_VERSION:END -->"
+          replacement = f"{start}\n- ✅ Spicetify `{os.environ['VERSION']}`\n{end}"
+
+          if start not in text or end not in text:
+              raise SystemExit("README version markers were not found")
+
+          before, remainder = text.split(start, 1)
+          _, after = remainder.split(end, 1)
+          path.write_text(before + replacement + after, encoding="utf-8")
+          PY
+
+      - name: Commit updated version
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add README.md
+          if git diff --cached --quiet; then
+            echo "README is already up to date."
+            exit 0
+          fi
+          git commit -m "docs: sync Spicetify version"
+          git push

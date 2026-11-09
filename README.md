@@ -1,102 +1,112 @@
 <p align="center">
-  <img src="docs/spicetify.ico" alt="Spicetify logo" width="128">
+  <img src="docs/logo.svg" alt="Spicetify logo" width="160">
 </p>
 
 # 🎵 Spicetify Menu
 
-I created this Windows menu to install, update, and remove Spicetify for the
-Spotify desktop application. The original source was published in a Gist and
-is now included directly in this repository as
-[`Spicetify_Menu.cmd`](Spicetify_Menu.cmd).
+I created this Windows utility to automate the installation, update, and
+removal of Spicetify. It uses the official Spicetify installer links so the
+user does not need to type a long sequence of commands in Command Prompt.
 
 > **Author:** I created and maintain the original code in this project.
 
 ## ✅ Requirements
 
 - 🪟 Windows 10 or Windows 11
-- 🎵 The Spotify desktop application
-- 🖥️ A regular desktop installation of Spotify
-- 📄 The script saved with the `.cmd` or `.bat` extension
+- 🎵 Spotify desktop application
+- 📦 The `.exe` downloaded from this repository's Releases
+- 🚫 Do not run the program as Administrator
 
-This menu is not intended for the Spotify web player or the Microsoft Store
-version of Spotify. Do not run the script as Administrator.
+This utility is intended for the Spotify desktop application, not the web
+player or the Microsoft Store version.
+
+## 📥 Downloads
+
+- [Download the latest Spicetify Menu release](../../releases/latest)
+- [Download Spotify directly from the official installer](https://download.scdn.co/SpotifySetup.exe)
+
+The executable is distributed through GitHub Releases. Download it only from
+this repository's Releases page.
 
 ## 🚀 Tutorial
 
 ### 1️⃣ Install Spotify
 
-If Spotify is not installed, download it from the
-[official Spotify download page](https://www.spotify.com/download/windows/).
-Open Spotify once after installation, then close it before running the menu.
+Install the Spotify desktop application using the
+[official Spotify installer](https://download.scdn.co/SpotifySetup.exe).
+Open Spotify once after installation, then close it before starting Spicetify
+Menu.
 
-### 2️⃣ Download the menu
+### 2️⃣ Download the Spicetify Menu executable
 
-1. Open the [latest release](../../releases/latest), or download
-   [`Spicetify_Menu.cmd`](Spicetify_Menu.cmd) from this repository.
-2. Click **Raw**, then save the file with the `.cmd` extension.
-3. Keep the file in a normal folder such as `Downloads\Spicetify`.
-4. Double-click the file to start it.
+1. Open the [latest release](../../releases/latest).
+2. Download the `.exe` asset.
+3. Save it in a normal folder such as `Downloads\Spicetify`.
+4. Double-click the executable to start it.
 
-Do not use **Run as administrator**. The script checks this automatically and
-stops if it detects an elevated console.
+![Spicetify Menu welcome screen](docs/tutorial/welcome.png)
 
-### 3️⃣ Confirm Spotify
+The program checks that Spotify is available before showing the menu. Follow
+the prompt shown in the console window.
 
-When the program asks whether the Spotify desktop application is installed,
-press **Y** to continue or **N** to close the menu.
+### 3️⃣ Do not run as Administrator
+
+Run the program normally. If Windows shows **Administrator** in the window
+title, close it and start the executable again without elevation.
+
+![Administrator warning](docs/tutorial/administrator-warning.png)
+
+The program stops intentionally when it detects an elevated console.
 
 ### 4️⃣ Choose an operation
 
-The menu provides four options:
+After the initial check, the main menu provides:
 
 | Option | Action |
 | --- | --- |
 | `1` | Install Spicetify and the Marketplace |
 | `2` | Update Spicetify and reapply the backup |
-| `3` | Restore Spotify and uninstall Spicetify files |
+| `3` | Restore Spotify and remove Spicetify files |
 | `0` | Exit |
 
-Type the option number and press the corresponding key. The script displays
-each operation in a separate console message.
+![Spicetify Menu options](docs/tutorial/menu.png)
 
-### 5️⃣ Confirm the installation
+Select an option in the console and follow the progress messages. The utility
+automates the official installation commands and the required Spicetify
+backup, apply, restore, clear, and restart steps.
 
-After installation, the menu asks whether everything worked:
+### 5️⃣ Confirm the result
 
-- Press **Y** to return to the menu.
-- Press **N** to restore Spotify and retry the installation.
+After installation, confirm whether the operation worked:
 
-The uninstall option also asks for confirmation before removing Spicetify
-data from `%APPDATA%\spicetify` and `%LOCALAPPDATA%\spicetify`.
+- Choose **Y** to return to the menu.
+- Choose **N** to restore Spotify and retry the installation.
 
-## 🧰 What the script does
+The uninstall option asks for confirmation before removing Spicetify data from
+`%APPDATA%\spicetify` and `%LOCALAPPDATA%\spicetify`.
 
-- Installs Spicetify from the official Spicetify installer.
-- Installs the official Spicetify Marketplace installer.
-- Runs `spicetify backup`, `apply`, `clear`, `restart`, and `restore` as needed.
-- Updates Spicetify with `spicetify upgrade`.
-- Removes the local Spicetify folders during uninstall.
+## 🔗 Official tools used
 
-The script uses only the official installer URLs:
+The utility automates these official Spicetify links:
 
 - [Spicetify CLI installer](https://raw.githubusercontent.com/spicetify/spicetify-cli/master/install.ps1)
 - [Spicetify Marketplace installer](https://raw.githubusercontent.com/spicetify/spicetify-marketplace/main/resources/install.ps1)
 
-## 🧪 Last tested versions
+No third-party download mirror is required for Spicetify installation.
 
-The original Gist was tested on **20 May 2025** with:
+## 🧪 Last tested version
 
-- ✅ Spotify `1.2.62.580.gb27ad23e`
-- ✅ Spicetify `v2.40.9`
+The version below is synchronized automatically from the latest release in the
+official [Spicetify CLI repository](https://github.com/spicetify/spicetify-cli).
+The workflow updates this value when a new release is published; confirm
+compatibility before installing after a Spotify update.
 
-Spotify and Spicetify change over time. If an update breaks the script, first
-use the **Update** option or check the official Spicetify documentation.
+<!-- SPICETIFY_VERSION:START -->
+- ✅ Spicetify `v2.46.4`
+<!-- SPICETIFY_VERSION:END -->
 
-## 📄 Source code
-
-The complete source is available in
-[`Spicetify_Menu.cmd`](Spicetify_Menu.cmd). The file is intentionally kept as
-a plain Windows command script so it can be inspected before execution.
+The original Gist was tested on 20 May 2025 with Spotify
+`1.2.62.580.gb27ad23e` and Spicetify `v2.40.9`.
 
 ## 📄 License
 
