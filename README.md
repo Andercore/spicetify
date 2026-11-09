@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="docs/logo.svg" alt="Spicetify logo" width="160">
+  <img src="docs/logo.png" alt="Spicetify logo" width="180">
 </p>
 
 # 🎵 Spicetify Menu
