@@ -69,8 +69,6 @@ After the initial check, the main menu provides:
 | `3` | Restore Spotify and remove Spicetify files |
 | `0` | Exit |
 
-![Spicetify Menu options](docs/tutorial/menu.png)
-
 Select an option in the console and follow the progress messages. The utility
 automates the official installation commands and the required Spicetify
 backup, apply, restore, clear, and restart steps.
