@@ -96,10 +96,13 @@ No third-party download mirror is required for Spicetify installation.
 
 ## 🧪 Last tested version
 
-The version below is synchronized automatically from the latest release in the
-official [Spicetify CLI repository](https://github.com/spicetify/spicetify-cli).
-The workflow updates this value when a new release is published; confirm
-compatibility before installing after a Spotify update.
+The repository checks the latest release in the official
+[Spicetify CLI repository](https://github.com/spicetify/spicetify-cli) every
+15 minutes. The version below is updated automatically in this README when a
+new CLI release is published.
+
+This synchronization changes documentation only. The released `.exe` is not
+replaced because the program already uses the official Spicetify CLI.
 
 <!-- SPICETIFY_VERSION:START -->
 - ✅ Spicetify `v2.46.4`
