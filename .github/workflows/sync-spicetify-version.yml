@@ -18,12 +18,12 @@ jobs:
       - name: Read latest official Spicetify release
         id: release
         run: |
-          version="$(curl --fail --silent --show-error \
-            -H "Accept: application/vnd.github+json" \
-            https://api.github.com/repos/spicetify/spicetify-cli/releases/latest \
-            | jq -r '.tag_name')"
+          version="$(curl --fail --silent --show-error --location \
+            https://github.com/spicetify/spicetify-cli/releases/latest \
+            | grep -oE 'tag/v[0-9][^"]+' \
+            | head -n 1 \
+            | cut -d/ -f2)"
           test -n "$version"
-          test "$version" != "null"
           echo "version=$version" >> "$GITHUB_OUTPUT"
 
       - name: Update README
