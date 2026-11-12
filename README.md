@@ -103,7 +103,7 @@ This synchronization changes documentation only. The released `.exe` is not
 replaced because the program already uses the official Spicetify CLI.
 
 <!-- SPICETIFY_VERSION:START -->
-- ✅ Spicetify `v2.46.4`
+- ✅ Spicetify `v2.46.7`
 <!-- SPICETIFY_VERSION:END -->
 
 The original Gist was tested on 20 May 2025 with Spotify
